@@ -1,4 +1,7 @@
 export default {
+  // Disable starting question
+  telemetry: false,
+  
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
 
