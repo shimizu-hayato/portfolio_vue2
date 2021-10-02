@@ -33,23 +33,21 @@ export default Vue.extend({
     calculateSectionOffsets() {
       let sections = document.getElementsByTagName('section');
       let length = sections.length;
-      console.log(length)
       for(let i = 0; i < length; i++) {
         let sectionOffset: number = sections[i].offsetTop;
         this.offsets.push(sectionOffset);
       }
     },
     handleMouseWheel: function(e: any) {
-      e.preventDefault();
-      if (e.wheelDelta < 80 && !this.inMove) {
+      if (e.wheelDelta < -30 && !this.inMove) {
         this.moveUp();
-      } else if (e.wheelDelta > 80 && !this.inMove) {
+      } else if (e.wheelDelta > 30 && !this.inMove) {
         this.moveDown();
       }
+      e.preventDefault();
       return false;
     },
     handleKeyUpDown: function(e : any){
-      console.log(this.inMove)
       if (e.keyCode == '40' && !this.inMove) {
         this.moveUp();
       } else if (e.keyCode == '38' && !this.inMove) {
@@ -59,7 +57,6 @@ export default Vue.extend({
       return false;
     },
     handleMouseWheelDOM: function(e : any) {
-      
       if (e.detail > 0 && !this.inMove) {
         this.moveUp();
       } else if (e.detail < 0 && !this.inMove) {
@@ -72,24 +69,31 @@ export default Vue.extend({
       this.inMove = true;
       this.activeSection--;
         
-      if(this.activeSection < 0) this.activeSection = this.offsets.length - 1;
+      if(this.activeSection < 0) { 
+        // this.activeSection = this.offsets.length - 1; 
+        this.activeSection = 0;
+      }
         
       this.scrollToSection(this.activeSection, true);
+      console.log('move down ' + this.activeSection);
     },
     moveUp() {
       this.inMove = true;
       this.activeSection++;
         
-      if(this.activeSection > this.offsets.length - 1) this.activeSection = 0;
+      if(this.activeSection > this.offsets.length - 1) {
+        // this.activeSection = 0;
+        this.activeSection = this.offsets.length - 1;
+      }
         
       this.scrollToSection(this.activeSection, true);
+      console.log('move up ' + this.activeSection);
     },
     scrollToSection(id: number, force = false) {
       if(this.inMove && !force) return false;
-      
       this.activeSection = id;
       this.inMove = true;
-      
+      //console.log(id);
       document.getElementsByTagName('section')[id].scrollIntoView({behavior: 'smooth'});
       
       setTimeout(() => {
@@ -139,8 +143,8 @@ export default Vue.extend({
 })
 </script>
 
-<style scoped>
-  h2 {
+<style scoped lang='scss'>
+h2 {
   position: fixed;
 }
 
@@ -153,12 +157,14 @@ export default Vue.extend({
   flex-direction: column;
 }
 
+/*
 h1 {
   font-size: 6em;
   margin: 0;
   text-align: center;
   padding: 0 1rem;
 }
+*/
 
 p {
   font-size: 1em;
@@ -180,7 +186,6 @@ p {
 section.black {
   background-color: #000;
 }
-
 .blue {
   background-color: #237ad4;
 }
@@ -189,9 +194,11 @@ section.black {
   background-color: #68c368;
 }
 
+/*
 h1.black {
   color: #fff;
 }
+*/
 
 .sections-menu {
   position: fixed;
@@ -216,9 +223,11 @@ h1.black {
   transform: scale(1.5);
 }
 
+/*
 @media screen and (max-width: 1200px) {
   h1 {
     font-size: 2.5em;
   }
 }
+*/
 </style>

@@ -1,0 +1,16 @@
+/* purgecss start ignore */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+/* purgecss end ignore */
+@import 'tailwindcss/utilities';
+
+/* add fonts here */
+@font-face {
+  font-family: "steeler";
+  src: url('../fonts/gunplay.ttf') format('woff');
+}
+
+@font-face {
+  font-family: "impact";
+  src: url('../fonts/impact.ttf') format('woff');
+}

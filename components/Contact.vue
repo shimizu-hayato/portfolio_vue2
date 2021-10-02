@@ -4,6 +4,6 @@ h1 Contact
 
 <style scoped>
 h1 {
-    color: #fff
+    color: #fff;
 }
 </style>

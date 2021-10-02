@@ -44,8 +44,16 @@ export default {
     '@nuxtjs/tailwindcss',
   ],
 
+  tailwindcss: {
+    cssPath: '~/assets/css/tailwind.css',
+    configPath: 'tailwind.config.js',
+    exposeConfig: false,
+    config: {}
+  },
+
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    'nuxt-webfontloader',
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
