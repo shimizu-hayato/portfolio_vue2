@@ -24,19 +24,6 @@ v-app#Home(class='mx-0')
       v-col.col-6.amber--text.logo.logo_xl It
       v-col.col-6.author.title_xl
         h2.text-right Hayato Shimizu
-    //v-row(no-gutters)
-      v-col(outlined)
-        v-row(no-gutters)
-          v-col.col-12.title_logo Adupt
-          v-col.col-12.title_logo For 
-          v-col.col-12.title_logo It
-      v-col(outlined)
-        v-row(no-gutters)
-          v-col.col-12.subtitle
-            h1.text-right Portfolio
-          v-col.col-12.subtitle
-            h2.text-right Hayato Shimizu
-            p {{$mq}}
 </template>
 
 <style scoped lang='scss'>

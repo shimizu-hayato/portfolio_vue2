@@ -2,7 +2,7 @@
 #app
   section.fullpage.black
     Home
-  section.fullpage
+  section.fullpage.white
     About
   section.fullpage.green
     Skills
@@ -193,6 +193,10 @@ section.black {
 
 .green {
   background-color: #68c368;
+}
+
+.white {
+  background-color: #fff
 }
 
 /*
