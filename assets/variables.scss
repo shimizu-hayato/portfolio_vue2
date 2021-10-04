@@ -2,3 +2,15 @@
 //
 // The variables you want to modify
 // $font-size-root: 20px;
+
+@font-face {
+    font-family: "Gunplay";
+    src: local("Gunplay"),
+     url(~assets/fonts/gunplay.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: "Impact";
+    src: local("Impact"),
+     url(~assets/fonts/impact.ttf) format("truetype");
+}
