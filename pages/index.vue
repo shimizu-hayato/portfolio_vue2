@@ -3,7 +3,7 @@
   section.fullpage.black
     Home
   section.fullpage.white
-    About
+    About(@vcard_hover='onScrollUnit = $event')
   section.fullpage.green
     Skills
   section.fullpage.red
@@ -26,7 +26,8 @@ export default Vue.extend({
       inMove: false as boolean,
       activeSection: 0 as number,
       offsets: [] as Array<number>,
-      touchStartY: 0 as number
+      touchStartY: 0 as number,
+      onScrollUnit: false as boolean,
     }
   },
   methods: {
@@ -37,6 +38,7 @@ export default Vue.extend({
         let sectionOffset: number = sections[i].offsetTop;
         this.offsets.push(sectionOffset);
       }
+      //console.log(this.offsets)
     },
     handleMouseWheel: function(e: any) {
       if (e.wheelDelta < -30 && !this.inMove) {
@@ -75,7 +77,7 @@ export default Vue.extend({
       }
         
       this.scrollToSection(this.activeSection, true);
-      console.log('move down ' + this.activeSection);
+      //console.log('move down ' + this.activeSection);
     },
     moveUp() {
       this.inMove = true;
@@ -87,7 +89,7 @@ export default Vue.extend({
       }
         
       this.scrollToSection(this.activeSection, true);
-      console.log('move up ' + this.activeSection);
+      //console.log('move up ' + this.activeSection);
     },
     scrollToSection(id: number, force = false) {
       if(this.inMove && !force) return false;
@@ -120,6 +122,9 @@ export default Vue.extend({
       console.log('Touch')
       this.touchStartY = 0;
       return false;
+    },
+    notScroll() {
+      this.inMove = true;
     }
   },
   mounted() {
