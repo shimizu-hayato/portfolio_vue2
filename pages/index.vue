@@ -4,9 +4,9 @@
     Home
   section.fullpage.white
     About(@vcard_hover='onScrollUnit = $event')
-  section.fullpage.green
+  section.fullpage.black
     Skills
-  section.fullpage.red
+  section.fullpage.white
     Contact
   .sections-menu
     span(

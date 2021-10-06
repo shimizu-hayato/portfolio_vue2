@@ -63,5 +63,8 @@ v-app#Home(class='mx-0')
   font-size: 6vh;
 }
 
+.container {
+  max-width: 1024px;
+}
 
 </style>
