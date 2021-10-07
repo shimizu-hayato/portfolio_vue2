@@ -1,13 +1,13 @@
 <template lang="pug">
 v-app#about
-  v-container(class="mx-auto fluid fill-height dense")
+  v-container(class="mx-auto px-0 justify center fluid")
     v-row(class="titles" no-gutters)
       v-col(cols="12")
         .title_text
           h2(class="text-center") ABOUT
         h3(class="dispaly-3 text-center amber--text") 自己紹介
         //v-row(class="mx-auto" justify="center")
-    v-row(v-if="$mq === 'xs' || $mq === 'sm'" no-gutters)
+    v-row(v-if="$mq === 'xs' || $mq === 'sm'" no-gutters class="content_area")
       v-col(cols="12")
         v-layout(justify-center)
           v-avatar(color="amber" size="30vh" class="center")
@@ -18,10 +18,18 @@ v-app#about
           contain
           max-height="20vw
           max-width="20vw")
-      v-col(class="col-12 warp-text")
+      v-col(class="col-12 warp-text mt-10")
         v-card#card(light max-height="30vh" class="card block")
-          v-card-title 氏名：清水　隼人
-          v-card-subtitle 出身地：愛媛県
+          v-list(dense light)
+            v-list-item
+              v-list-item-icon 氏名
+              v-list-item-content 清水隼人（しみずはやと）
+            v-list-item
+              v-list-item-icon 出身地
+              v-list-item-content 愛媛県
+            v-list-item
+              v-list-item-icon 趣味
+              v-list-item-content 英語の勉強がてらNFL観戦
           v-card-text
             .card_text(v-html="description")
           v-card-actions
@@ -47,18 +55,24 @@ v-app#about
                   )
                     v-icon(class="black--text") mdi-close
                   v-toolbar-title Profile
-                v-card-title 氏名：清水隼人（しみずはやと）
-                v-spacer
-                v-card-subtitle 出身地：愛媛県
-                v-card-subtitle 趣味：英語の勉強がてら海外スポーツ鑑賞
+                v-list(dense light)
+                  v-list-item
+                    v-list-item-icon 氏名
+                    v-list-item-content 清水隼人（しみずはやと）
+                  v-list-item
+                    v-list-item-icon 出身地
+                    v-list-item-content 愛媛県
+                  v-list-item
+                    v-list-item-icon 趣味
+                    v-list-item-content 英語の勉強がてらNFL観戦
                 v-card-text(v-html="description")
-    v-row(v-if="$mq === 'md' || $mq === 'lg' || $mq === 'xl'")
+    v-row(v-if="$mq === 'md' || $mq === 'lg' || $mq === 'xl'" justify="center" class="content_area")
       v-col(cols="6")
         v-layout(justify-center)
-          v-avatar(color="amber" size="45vh" class="center")
-            v-icon(dark size="45vh") mdi-account-circle
-      v-col(class="col-6 warp-text")
-        v-list(dense light max-width="50vh")
+          v-avatar(color="amber" size="40vh" class="center")
+            v-icon(dark size="40vh") mdi-account-circle
+      v-col(class="col-6 warp-text pa-0")
+        v-list(dense light max-width="45vh")
           v-list-item
             v-list-item-icon 氏名
             v-list-item-content 清水隼人（しみずはやと）
@@ -67,7 +81,7 @@ v-app#about
             v-list-item-content 愛媛県
           v-list-item
             v-list-item-icon 趣味
-            v-list-item-content 英語の勉強がてら海外スポーツ鑑賞
+            v-list-item-content 英語の勉強がてらNFL観戦
           v-list-item
             v-list-item-icon ひとこと<br>
           v-list-item
@@ -98,6 +112,7 @@ export default {
     font-family: "Gunplay", sans-serif;
     font-size: 8vh;
     text-align: center;
+    margin-bottom: -5vh;
 }
 /*
   .titles{
@@ -105,6 +120,7 @@ export default {
   }
 */
 #about {
+    width: 100%;
     color: #000;
     background-color: white;
 }
@@ -119,5 +135,9 @@ export default {
   word-break: break-all;
   white-space: pre-line;
   text-overflow: ellipsis;
+}
+
+.content_area {
+  margin-top: 10vh;
 }
 </style>
