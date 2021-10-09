@@ -10,10 +10,10 @@
         )
           v-tabs-slider(color="black")
           v-tab(
-          v-for="skill in skills"
-          :key="skill.title"
-          @click='change_bar_color(skill)'
-          :color="skill.bar_color"
+            v-for="skill in skills"
+            :key="skill.title"
+            @click='change_bar_color(skill)'
+            :color="skill.bar_color"
           ) {{ skill.lang }}
       v-toolbar-title {{title}}
     v-container
@@ -29,12 +29,13 @@
             class=""
             hide-default-footer
             mobile-breakpoint="0")
-          v-card_text(class="card_text") {{skill.comment}}
+          //v-footer(absolute)
+          v-card-text(class="") {{skill.comment}}
 </template>
 
 <script>
 export default {
-  name:"TabSkillCards",
+  name:"TabSkillCard",
   props: {
       source: String,
       skills: Array

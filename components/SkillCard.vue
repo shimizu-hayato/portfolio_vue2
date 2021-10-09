@@ -1,20 +1,21 @@
 <template lang="pug">
-  v-card(class="ma-3" light min-height="60vh")
-    v-app-bar(dark :color="skill.bar_color")
-      v-toolbar-title {{skill.title}}
-    v-container
-      v-data-table(
-        light
-        :headers="headers"
-        :items="skill.tools"
-        class=""
-        hide-default-footer)
-      v-footer(absolute )
-        v-card_text(class="card_text") {{skill.comment}}
+v-card(class="ma-3" light min-height="60vh")
+  v-app-bar(dark :color="skill.bar_color")
+    v-toolbar-title {{skill.title}}
+  v-container
+    v-data-table(
+      light
+      :headers="headers"
+      :items="skill.tools"
+      class=""
+      hide-default-footer)
+    v-footer(absolute)
+      v-card-text(class="card_text") {{skill.comment}}
 </template>
 
 <script>
 export default {
+  name:"SkillCard",
   props: {
       source: String,
       skill: Object

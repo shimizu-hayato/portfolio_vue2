@@ -72,7 +72,7 @@ v-app#about
           v-avatar(color="amber" size="40vh" class="center")
             v-icon(dark size="40vh") mdi-account-circle
       v-col(class="col-6 warp-text pa-0")
-        v-list(dense light max-width="45vh")
+        v-list(dense light max-width="45vmax")
           v-list-item
             v-list-item-icon 氏名
             v-list-item-content 清水隼人（しみずはやと）

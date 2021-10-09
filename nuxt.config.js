@@ -1,4 +1,3 @@
-import colors from 'vuetify/es5/util/colors'
 
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
@@ -31,6 +30,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    '~/plugins/vue-mq.js',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -42,15 +42,18 @@ export default {
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
+    `@nuxtjs/dotenv`,
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+      "@nuxtjs/axios",
   ],
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
+    /*
     theme: {
       dark: true,
       themes: {
@@ -74,10 +77,16 @@ export default {
           success: colors.green.accent3
       }
     }
+    */
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
   },
-  plugins: ['~/plugins/vue-mq.js'],
+  publicRuntimeConfig: {
+    form_url_public: process.env.FORM_URL,
+    cors_proxy: process.env.CORS_PROXY
+  },
+  privateRuntimeConfig: {
+  }
 }

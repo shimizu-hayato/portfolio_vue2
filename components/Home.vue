@@ -1,5 +1,5 @@
 <template lang="pug">
-v-app#Home(class='mx-0')
+v-app#Home(class='mx-0' dark)
   v-container(class='mx-auto px-5 justify center fluid fill-height'
               v-if="$mq === 'xs' || $mq === 'md' || $mq === 'sm'")
     v-row(v-if="$mq === 'xs'" no-gutters)
@@ -32,6 +32,8 @@ v-app#Home(class='mx-0')
 <style scoped lang='scss'>
 #Home {
     width: 100%;
+    background-color: black;
+    color: white;
 }
 
 .logo {

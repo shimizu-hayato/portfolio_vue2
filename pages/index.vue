@@ -38,6 +38,7 @@ export default Vue.extend({
         let sectionOffset: number = sections[i].offsetTop;
         this.offsets.push(sectionOffset);
       }
+      
       //console.log(this.offsets)
     },
     handleMouseWheel: function(e: any) {
@@ -49,6 +50,7 @@ export default Vue.extend({
       e.preventDefault();
       return false;
     },
+    /*
     handleKeyUpDown: function(e : any){
       if (e.keyCode == '40' && !this.inMove) {
         this.moveUp();
@@ -58,6 +60,7 @@ export default Vue.extend({
       e.preventDefault();
       return false;
     },
+    */
     handleMouseWheelDOM: function(e : any) {
       if (e.detail > 0 && !this.inMove) {
         this.moveUp();
@@ -128,6 +131,7 @@ export default Vue.extend({
     }
   },
   mounted() {
+    
     this.calculateSectionOffsets();
     
     window.addEventListener('DOMMouseScroll', this.handleMouseWheelDOM, { passive: false });  // Mozilla Firefox
@@ -135,7 +139,7 @@ export default Vue.extend({
     
     window.addEventListener('touchstart', this.touchStart, { passive: false }); // mobile devices
     window.addEventListener('touchmove', this.touchMove, { passive: false }); // mobile devices
-    window.addEventListener('keydown', this.handleKeyUpDown, { passive: false }); // mobile devices
+    //window.addEventListener('keydown', this.handleKeyUpDown, { passive: false }); // mobile devices
   },
   destroyed() {
     window.removeEventListener('mousewheel', this.handleMouseWheel);  // Other browsers
@@ -143,7 +147,7 @@ export default Vue.extend({
     
     window.removeEventListener('touchstart', this.touchStart); // mobile devices
     window.removeEventListener('touchmove', this.touchMove); // mobile devices
-    window.removeEventListener('keydown', this.handleKeyUpDown);
+    //window.removeEventListener('keydown', this.handleKeyUpDown);
   }
 })
 </script>

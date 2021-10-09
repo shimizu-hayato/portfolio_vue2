@@ -20,9 +20,9 @@ v-app#Skills
 </template>
 
 <script>
-
 export default {
   name: "Skills",
+  Component: () => import("~/components/SkillCard.vue"),
   data () {
     return {
       skills: [
@@ -75,5 +75,7 @@ export default {
 }
 #Skills {
     width: 100%;
+    background-color: black;
+    color: white;
 }
 </style>
