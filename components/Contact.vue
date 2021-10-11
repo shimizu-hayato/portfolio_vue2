@@ -1,75 +1,74 @@
 <template lang="pug">
 v-app(light)#content
   v-container(class="mx-auto fluid")
-    v-row(class="titles mb-10")
+    v-row(class="titles")
       v-col(cols="12")
         .title_text
           h2(class="text-center" dark) Contact
         h3(class="dispaly-3 text-center amber--text") 連絡
-  v-form(@submit.prevent class="fill-height" ref="form")
-    v-container(class="mx-auto fluid fill-height")  
-      //v-row(v-show="!loading" justify="center" align-content="center")
-        v-col(cols="12" class="text-center")
-          v-progress-circular(
-            :size="100"
-            :width="8"
-            color="amber"
-            indeterminate
-          ) sending...
-      v-row
-        v-overlay(
-          :absolute="absolute"
-          :value="loading || send_result"
-        )
-          v-progress-circular(
-            :size="100"
-            :width="8"
-            color="amber"
-            indeterminate
-            v-if="!send_result"
-          ) sending...
-          v-row(v-if="send_result" align-content="center" justify="center")
-            v-col(cols="12" class="send_enter text-center black--text") 送信完了しました
-            v-col(cols="12" class="text-center")
-              v-btn(@click="close_overlay") OK 
-
-        v-col(cols="12" md="6")
-          v-text-field(
-            v-model="name"
-            :rules="nameRules"
-            :counter="10"
-            label="名前"
-            name="entry.938458302"
-            id="entry.938458302"
-            required
-            outlined
+    v-card(height="70vh")
+      v-card-title(class="text-center") 応募フォーム
+      v-form(@submit.prevent class="fill-height" ref="form")
+        //v-container(class="mx-auto fluid fill-height")  
+        //v-row(v-show="!loading" justify="center" align-content="center")
+        v-row(class="mx-auto")
+          v-overlay(
+            :absolute="absolute"
+            :value="loading || send_result"
           )
-        v-col(cols="12" md="6")
-          v-text-field(
-            v-model="email"
-            :rules="emailRules"
-            label="email"
-            name="entry.60496047"
-            id="entry.60496047"
-            required
-            outlined
-          )
-        v-col(cols="12")
-          v-textarea(
-            v-model="textarea"
-            :rules="textareaRules"
-            label="お問い合わせ内容"
-            name="entry.1279892730"
-            id="entry.1279892730"
-            value=""
-            :counter="200"
-            outlined
-            
-          )
-        v-col(cols="12")
-          v-btn(dark class="mr-4" @click="submit") 送信
-          v-btn(light class="mr-4" @click="clear") クリア
-        //- v-btn(dark class="mr-4" form="gform" @click="submit")送信
+            v-progress-circular(
+              :size="100"
+              :width="8"
+              color="amber"
+              indeterminate
+              v-if="!send_result"
+            ) 
+            span(v-if="!send_result" class="text-h3 mx-5 amber--text") sending...
+            v-row(v-if="send_result" align-content="center" justify="center")
+              v-col(cols="12" class="text-h1 send_enter text-center green--text") 送信完了しました
+              v-col(cols="12" class="text-center")
+                v-btn(@click="close_overlay") OK 
+          v-col(cols="6" md="6")
+            v-text-field(
+              v-model="name"
+              :rules="nameRules"
+              :counter="10"
+              label="名前"
+              name="entry.938458302"
+              id="entry.938458302"
+              required
+              outlined
+              height="1vh"
+            )
+          v-col(cols="6" md="6")
+            v-text-field(
+              v-model="email"
+              :rules="emailRules"
+              label="email"
+              name="entry.60496047"
+              id="entry.60496047"
+              required
+              outlined
+              height="5vh"
+            )
+          v-col(cols="9" md="12")
+            v-textarea(
+              v-model="textarea"
+              :rules="textareaRules"
+              label="お問い合わせ内容"
+              name="entry.1279892730"
+              id="entry.1279892730"
+              value=""
+              :counter="400"
+              outlined
+              no-resize
+              height="30vmin"
+              rows="5"
+            )
+          v-col(cols="3" md ="12")
+            v-btn(dark class="mr-5 mb-5" @click="submit") 送信
+            v-btn(light class="mr-5 mb-5" @click="clear") クリア
+          //- v-btn(dark class="mr-4" form="gform" @click="submit")送信
 </template>
 
 <script>
@@ -94,7 +93,7 @@ export default {
         textarea: '',
         textareaRules: [
           v => !!v || 'お問い合わせ内容は必須です',
-          v => v.length <= 200 || 'Name must be less than 200 characters',
+          v => v.length <= 400 || 'Name must be less than 400 characters',
         ]
       }
     },
@@ -145,6 +144,9 @@ export default {
     //color: #000;
     //background-color: white;
     width: 100%;
+}
+.titles {
+  margin-bottom: 1vh;
 }
 .title_text {
     font-family: "Gunplay", sans-serif;
