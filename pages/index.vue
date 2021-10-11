@@ -1,6 +1,6 @@
 <template lang='pug'>
-#app
-  section.fullpage.black
+v-app
+  section.fullpage
     Home
   section.fullpage.white
     About(@vcard_hover='onScrollUnit = $event')
@@ -161,10 +161,11 @@ h2 {
   height: 100vh;
   width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  //justify-content: center;
+  //align-items: center;
   flex-direction: column;
   overflow: hidden;
+  background-color: red;
 }
 
 /*

@@ -1,5 +1,5 @@
 <template lang="pug">
-v-app#Skills
+#Skills
   v-container(class="mx-auto fluid fill-height pa-0")
     v-row(class="titles" no-gutters dense)
       v-col(cols="12")

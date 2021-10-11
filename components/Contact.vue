@@ -1,5 +1,5 @@
 <template lang="pug">
-v-app(light)#content
+#content
   v-container(class="mx-auto fluid")
     v-row(class="titles")
       v-col(cols="12")

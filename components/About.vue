@@ -1,5 +1,5 @@
 <template lang="pug">
-v-app#about
+#about
   v-container(class="mx-auto px-0 justify center fluid")
     v-row(class="titles" no-gutters)
       v-col(cols="12")
