@@ -1,15 +1,16 @@
 <template lang='pug'>
 v-app
-  section.fullpage
-    Home
-  section.fullpage.white
-    About(@vcard_hover='onScrollUnit = $event')
-  section.fullpage.black
-    Skills
-  section.fullpage.white
-    Contact
-  .sections-menu
-    span(
+  #horizontal
+    section.fullpage
+      Home
+    section.fullpage.white
+      About_h(@vcard_hover='onScrollUnit = $event')
+    section.fullpage.black
+      Skills
+    section.fullpage.white
+      Contact
+    .sections-menu
+      span(
       class="menu-point"
       v-bind:class="{active: activeSection == index}"
       v-on:click="scrollToSection(index)"
@@ -31,15 +32,16 @@ export default Vue.extend({
     }
   },
   methods: {
+    
     calculateSectionOffsets() {
       let sections = document.getElementsByTagName('section');
       let length = sections.length;
       for(let i = 0; i < length; i++) {
-        let sectionOffset: number = sections[i].offsetTop;
+        let sectionOffset: number = sections[i].offsetLeft;
         this.offsets.push(sectionOffset);
       }
       
-      //console.log(this.offsets)
+      console.log(this.offsets)
     },
     handleMouseWheel: function(e: any) {
       if (e.wheelDelta < -30 && !this.inMove) {
@@ -50,7 +52,6 @@ export default Vue.extend({
       e.preventDefault();
       return false;
     },
-    /*
     handleKeyUpDown: function(e : any){
       if (e.keyCode == '40' && !this.inMove) {
         this.moveUp();
@@ -60,7 +61,6 @@ export default Vue.extend({
       e.preventDefault();
       return false;
     },
-    */
     handleMouseWheelDOM: function(e : any) {
       if (e.detail > 0 && !this.inMove) {
         this.moveUp();
@@ -98,9 +98,7 @@ export default Vue.extend({
       if(this.inMove && !force) return false;
       this.activeSection = id;
       this.inMove = true;
-      //console.log(id);
-      document.getElementsByTagName('section')[id].scrollIntoView({behavior: 'smooth'});
-      
+      document.getElementsByTagName('section')[id].scrollIntoView({behavior: 'smooth', inline: "end"});
       setTimeout(() => {
         this.inMove = false;
       }, 600);
@@ -129,6 +127,7 @@ export default Vue.extend({
     notScroll() {
       this.inMove = true;
     }
+    
   },
   mounted() {
     
@@ -157,13 +156,23 @@ h2 {
   position: fixed;
 }
 
-.fullpage {
-  height: 100vmin;
-  width: 100vmin;
+#horizontal {
   display: flex;
+  overflow-x: scroll;
+  overflow-y: auto;
+	//white-space: nowrap;
+}
+
+.fullpage {
+  height: 100%;
+  width: 100vmin;
+  min-width: 100vmin;
+  display: flex;
+  flex-wrap: nowrap;
   //justify-content: center;
   //align-items: center;
-  flex-direction: column;
+  //flex-direction: column;
+  flex-direction: row;
   overflow: hidden;
   background-color: red;
 }
@@ -172,7 +181,7 @@ h2 {
 h1 {
   font-size: 6em;
   margin: 0;
-  text-align: center;
+  text-align:vertical-delimiters center;
   padding: 0 1rem;
 }
 */
