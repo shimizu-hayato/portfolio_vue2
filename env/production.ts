@@ -1,3 +1,3 @@
 module.exports = {
-  BASE_URL: '/portfolio/'
+  BASE_URL: '/'
 }
