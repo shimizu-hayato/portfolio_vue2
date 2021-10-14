@@ -1,6 +1,6 @@
 <template lang="pug">
 #Skills
-  v-container
+  v-container(class="mx-auto fluid")
     v-row(class="titles" no-gutters dense)
       v-col(cols="12")
         .title_text

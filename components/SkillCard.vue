@@ -1,8 +1,8 @@
 <template lang="pug">
-v-card(class="ma-3" light min-height="60vh")
+v-card(class="ma-3" light min-height="60vmin")
   v-app-bar(dark :color="skill.bar_color")
     v-toolbar-title {{skill.title}}
-  v-container
+  #content
     v-data-table(
       light
       :headers="headers"
