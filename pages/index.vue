@@ -1,6 +1,6 @@
 <template lang='pug'>
 v-app
-  section.fullpage
+  section.fullpage.black
     Home
   section.fullpage.white
     About(@vcard_hover='onScrollUnit = $event')
@@ -158,24 +158,15 @@ h2 {
 }
 
 .fullpage {
-  height: 100vmin;
-  width: 100vmin;
+  height: 100vh;
+  width: 100%;
   display: flex;
-  //justify-content: center;
-  //align-items: center;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
   overflow: hidden;
   background-color: red;
 }
-
-/*
-h1 {
-  font-size: 6em;
-  margin: 0;
-  text-align: center;
-  padding: 0 1rem;
-}
-*/
 
 p {
   font-size: 1em;
@@ -209,12 +200,6 @@ section.black {
   background-color: #fff
 }
 
-/*
-h1.black {
-  color: #fff;
-}
-*/
-
 .sections-menu {
   position: fixed;
   right: 1rem;
@@ -237,12 +222,4 @@ h1.black {
   opacity: 1;
   transform: scale(1.5);
 }
-
-/*
-@media screen and (max-width: 1200px) {
-  h1 {
-    font-size: 2.5em;
-  }
-}
-*/
 </style>

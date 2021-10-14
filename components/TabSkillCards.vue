@@ -1,5 +1,5 @@
 <template lang="pug">
-  v-card(class="ma-3" light height="60vh")
+  v-card(class="ma-3" light height="60vmin")
     v-app-bar(dark :color="bar_color" flat class="ma-0 pa-0")
       template(v-slot:extension)
         v-tabs(
@@ -16,9 +16,11 @@
             :color="skill.bar_color"
           ) {{ skill.lang }}
       v-toolbar-title {{title}}
-    v-container
+    .content
       v-tabs-items(v-model="tab" light)
         v-tab-item(
+            class="tabele_style"
+            calculate-widths
             v-for="skill in skills"
             :key="skill.title"
             light)
@@ -65,8 +67,11 @@ export default {
 
 <style scoped lang="scss">
 .card_text {
-    height: 10vh;
-    font-size: 1.5vh;
+    height: 10vmin;
+    font-size: 1.5vmin;
     padding: 0;
+}
+.tabele_style {
+  max-width: 90vmin;
 }
 </style>

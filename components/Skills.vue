@@ -1,6 +1,6 @@
 <template lang="pug">
 #Skills
-  v-container(class="mx-auto fluid fill-height pa-0")
+  v-container
     v-row(class="titles" no-gutters dense)
       v-col(cols="12")
         .title_text
@@ -13,8 +13,7 @@
             :key="skill.title"
             class="pa-0")
         SkillCard(:skill="skill")
-    v-row(v-if="$mq === 'md' || $mq === 'xs' || $mq === 'sm'"
-          class="ma-0")
+    v-row(v-if="$mq === 'md' || $mq === 'xs' || $mq === 'sm'")
       v-col(cols="12")
         TabSkillCards(:skills="skills")
 </template>
@@ -70,8 +69,8 @@ export default {
 <style scoped lang="scss">
 .title_text {
     font-family: "Gunplay", sans-serif;
-    font-size: 8vh;
-    margin-bottom: -1vh;
+    font-size: 8vmin;
+    margin-bottom: -1vmin;
 }
 #Skills {
     width: 100%;

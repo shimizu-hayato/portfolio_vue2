@@ -1,26 +1,19 @@
 <template lang="pug">
 #about
-  v-container(class="mx-auto px-0 justify center fluid")
-    v-row(class="titles" no-gutters)
-      v-col(cols="12")
+  v-container
+    v-row(class="titles" align="center" align-content="left")
+      v-col(cols="6")
         .title_text
           h2(class="text-center") ABOUT
         h3(class="dispaly-3 text-center amber--text") 自己紹介
-        //v-row(class="mx-auto" justify="center")
-    v-row(v-if="$mq === 'xs' || $mq === 'sm'" no-gutters class="content_area")
-      v-col(cols="12")
+      v-col(cols="6")
         v-layout(justify-center)
-          v-avatar(color="amber" size="30vh" class="center")
-            v-icon(dark size="30vh") mdi-account-circle
-        //v-img(
-          :src="require('~/assets/img/user_icon.png')"
-          class="ma-auto"
-          contain
-          max-height="20vw
-          max-width="20vw")
+          v-avatar(color="amber" size="40vmin" class="center")
+            v-icon(dark size="40vmin") mdi-account-circle
+    v-row(v-if="$mq === 'xs' || $mq === 'sm'" no-gutters class="content_area")
       v-col(class="col-12 warp-text mt-10")
-        v-card#card(light max-height="30vh" class="card block")
-          v-list(dense light)
+        v-card#card(light max-height="50vmin" class="card block")
+          v-list(dense light class="list_text")
             v-list-item
               v-list-item-icon 氏名
               v-list-item-content 清水隼人（しみずはやと）
@@ -30,7 +23,7 @@
             v-list-item
               v-list-item-icon 趣味
               v-list-item-content 英語の勉強がてらNFL観戦
-          v-card-text
+          v-card-text()
             .card_text(v-html="description")
           v-card-actions
             v-dialog(
@@ -45,7 +38,6 @@
                   color="teal accent-4"
                   @click="dialog = true"
                 ) Read More
-              //About_modal(:description="description" :dialog="dialog")
               v-card(light)
                 v-toolbar
                   v-btn(
@@ -66,26 +58,21 @@
                     v-list-item-icon 趣味
                     v-list-item-content 英語の勉強がてらNFL観戦
                 v-card-text(v-html="description")
-    v-row(v-if="$mq === 'md' || $mq === 'lg' || $mq === 'xl'" justify="center" class="content_area")
-      v-col(cols="6")
-        v-layout(justify-center)
-          v-avatar(color="amber" size="40vh" class="center")
-            v-icon(dark size="40vh") mdi-account-circle
+    v-row(v-if="$mq === 'md' || $mq === 'lg' || $mq === 'xl'" class="content_area")
       v-col(class="col-6 warp-text pa-0")
-        v-list(dense light max-width="45vmax")
+        v-list(dense light max-width="45vmax" class="list_text")
           v-list-item
             v-list-item-icon 氏名
-            v-list-item-content 清水隼人（しみずはやと）
+            v-list-item-content 清水隼人<br>(しみずはやと)
           v-list-item
             v-list-item-icon 出身地
             v-list-item-content 愛媛県
           v-list-item
             v-list-item-icon 趣味
             v-list-item-content 英語の勉強がてらNFL観戦
-          v-list-item
-            v-list-item-icon ひとこと<br>
-          v-list-item
-            p(v-html="description")
+      v-col(cols="6")
+        h2 ひとこと
+        p(v-html="description" class="description_text")
 </template>
 
 <script>
@@ -110,34 +97,29 @@ export default {
 <style scoped lang="scss">
 .title_text {
     font-family: "Gunplay", sans-serif;
-    font-size: 8vh;
+    font-size: 8vmin;
     text-align: center;
-    margin-bottom: -5vh;
+    margin-bottom: -5vmin;
 }
-/*
-  .titles{
-    padding-top: 5vh!important;
-  }
-*/
 #about {
-    width: 100%;
     color: #000;
     background-color: white;
 }
 
-.container {
-  max-width: 85%;
-  padding: 0;
-}
 .card_text {
-  height: 4vh;
-  overflow-y: hidden;
-  word-break: break-all;
-  white-space: pre-line;
+  height: 15vmin;
+  font-size: 2vmin;
+  overflow: hidden;
+  //word-break: break-all;
+  white-space: nowrap;
   text-overflow: ellipsis;
 }
 
-.content_area {
-  margin-top: 10vh;
+.list_text {
+  font-size: 3vmin;
+}
+
+.description_text {
+  font-size: 2vmin;
 }
 </style>

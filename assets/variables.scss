@@ -14,3 +14,19 @@
     src: local("Impact"),
      url(~assets/fonts/impact.ttf) format("truetype");
 }
+
+.title_text {
+    font-family: "Gunplay", sans-serif;
+    font-size: 8vmin;
+    text-align: center;
+    margin-bottom: -5vmin;
+}
+
+.container{
+    min-width: 100vmin;
+    min-height: 100vmin;
+    max-width: 100vmin;
+    max-height: 100vmin;
+    margin: 0;
+    padding: 3vmin;
+}

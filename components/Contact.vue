@@ -6,69 +6,64 @@
         .title_text
           h2(class="text-center" dark) Contact
         h3(class="dispaly-3 text-center amber--text") 連絡
-    v-card(height="70vh")
-      v-card-title(class="text-center") 応募フォーム
-      v-form(@submit.prevent class="fill-height" ref="form")
-        //v-container(class="mx-auto fluid fill-height")  
-        //v-row(v-show="!loading" justify="center" align-content="center")
-        v-row(class="mx-auto")
-          v-overlay(
-            :absolute="absolute"
-            :value="loading || send_result"
+    
+    v-form(@submit.prevent class="fill-height" ref="form")
+      v-row(class="mx-auto")
+        v-overlay(
+          :absolute="absolute"
+          :value="loading || send_result"
+        )
+          v-progress-circular(
+            :size="100"
+            :width="8"
+            color="amber"
+            indeterminate
+            v-if="!send_result"
+          ) 
+          span(v-if="!send_result" class="text-h3 mx-5 amber--text") sending...
+          v-row(v-if="send_result" align-content="center" justify="center")
+            v-col(cols="12" class="text-h1 send_enter text-center green--text") 送信完了しました
+            v-col(cols="12" class="text-center")
+              v-btn(@click="close_overlay") OK 
+        v-col(cols="6" md="6")
+          v-text-field(
+            v-model="name"
+            :rules="nameRules"
+            :counter="10"
+            label="名前"
+            name="entry.938458302"
+            id="entry.938458302"
+            required
+            outlined
+            height="1vh"
           )
-            v-progress-circular(
-              :size="100"
-              :width="8"
-              color="amber"
-              indeterminate
-              v-if="!send_result"
-            ) 
-            span(v-if="!send_result" class="text-h3 mx-5 amber--text") sending...
-            v-row(v-if="send_result" align-content="center" justify="center")
-              v-col(cols="12" class="text-h1 send_enter text-center green--text") 送信完了しました
-              v-col(cols="12" class="text-center")
-                v-btn(@click="close_overlay") OK 
-          v-col(cols="6" md="6")
-            v-text-field(
-              v-model="name"
-              :rules="nameRules"
-              :counter="10"
-              label="名前"
-              name="entry.938458302"
-              id="entry.938458302"
-              required
-              outlined
-              height="1vh"
-            )
-          v-col(cols="6" md="6")
-            v-text-field(
-              v-model="email"
-              :rules="emailRules"
-              label="email"
-              name="entry.60496047"
-              id="entry.60496047"
-              required
-              outlined
-              height="5vh"
-            )
-          v-col(cols="9" md="12")
-            v-textarea(
-              v-model="textarea"
-              :rules="textareaRules"
-              label="お問い合わせ内容"
-              name="entry.1279892730"
-              id="entry.1279892730"
-              value=""
-              :counter="400"
-              outlined
-              no-resize
-              height="30vmin"
-              rows="5"
-            )
-          v-col(cols="3" md ="12")
-            v-btn(dark class="mr-5 mb-5" @click="submit") 送信
-            v-btn(light class="mr-5 mb-5" @click="clear") クリア
-          //- v-btn(dark class="mr-4" form="gform" @click="submit")送信
+        v-col(cols="6" md="6")
+          v-text-field(
+            v-model="email"
+            :rules="emailRules"
+            label="email"
+            name="entry.60496047"
+            id="entry.60496047"
+            required
+            outlined
+            height="5vh"
+          )
+        v-col(cols="12" md="12")
+          v-textarea(
+            v-model="textarea"
+            :rules="textareaRules"
+            label="お問い合わせ内容"
+            name="entry.1279892730"
+            id="entry.1279892730"
+            value=""
+            :counter="400"
+            outlined
+            no-resize
+            :rows="rows"
+          )
+        v-col(cols="12" md ="12")
+          v-btn(dark class="mr-5 mb-5" @click="submit") 送信
+          v-btn(light class="mr-5 mb-5" @click="clear") クリア
 </template>
 
 <script>
@@ -76,6 +71,7 @@ export default {
     name: 'contact',
     data () {
       return {
+        rows:null,
         absolute: true,
         loading: false,
         send_result: false,
@@ -97,11 +93,8 @@ export default {
         ]
       }
     },
-    
     methods: {
       async submit() {
-        //this.$axios.defaults.withCredentials = true;
-        // let data = { "entry.938458302": this.name, "entry.60496047": this.email, "entry.1279892730": this.textarea}
         const params = new URLSearchParams();
         params.append('ifq',"")
         params.append('entry.938458302', this.name)
@@ -112,11 +105,9 @@ export default {
         this.loading = true;
         await this.$axios.post(CORS_PROXY + GOOGLE_FORM, params)
         .then(function (response) {
-          //console.log(response);
           if (response) {console.log("hoge")}
         })
         .catch(function (error) {
-          //console.log(error);
           if (error) {console.log("error")}
         })
         .finally(() => {
@@ -135,22 +126,25 @@ export default {
         this.send_result = false;
         this.clear()
       }
+    }, 
+    mounted() {
+      console.log(window.innerHeight+'px');
+      console.log(window.innerWidth+'px');
+      if (window.innerWidth < window.innerHeight){
+        this.rows = Math.floor(window.innerWidth / 70)
+      } else {
+        this.rows = Math.floor(window.innerHeight / 70)
+      }
     }
   }
 </script>
 
 <style scoped lang="scss">
 #content {
-    //color: #000;
-    //background-color: white;
     width: 100%;
 }
 .titles {
-  margin-bottom: 1vh;
-}
-.title_text {
-    font-family: "Gunplay", sans-serif;
-    font-size: 8vh;
+  margin-bottom: 1vmin;
 }
 
 .theme--dark.v-application {

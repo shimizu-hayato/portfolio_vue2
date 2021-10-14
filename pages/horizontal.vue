@@ -4,7 +4,7 @@ v-app
     section.fullpage
       Home
     section.fullpage.white
-      About_h(@vcard_hover='onScrollUnit = $event')
+      Abouth(@vcard_hover='onScrollUnit = $event')
     section.fullpage.black
       Skills
     section.fullpage.white
@@ -161,6 +161,7 @@ h2 {
   overflow-x: scroll;
   overflow-y: auto;
 	//white-space: nowrap;
+  min-width: 200vmin;
 }
 
 .fullpage {
@@ -174,7 +175,7 @@ h2 {
   //flex-direction: column;
   flex-direction: row;
   overflow: hidden;
-  background-color: red;
+  //background-color: red;
 }
 
 /*
