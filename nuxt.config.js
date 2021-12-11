@@ -21,7 +21,7 @@ export default {
     titleTemplate: '%s - portfolio',
     title: 'portfolio',
     htmlAttrs: {
-      lang: 'en'
+      lang: 'ja'
     },
     meta: [
       { charset: 'utf-8' },
@@ -36,11 +36,14 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    //'~/assets/variables.scss',
+    'animate.css/animate.min.css',
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '~/plugins/vue-mq.js',
+    {src: '~/plugins/vue-mq'},
+    {src: '~/plugins/fullpage', mode: 'client'}
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -53,11 +56,13 @@ export default {
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
     `@nuxtjs/dotenv`,
+    //'nuxt-vite',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
       "@nuxtjs/axios",
+      'nuxt-fullpage.js',
   ],
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify

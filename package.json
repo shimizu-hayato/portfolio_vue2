@@ -12,8 +12,11 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",
+    "animate.css": "^4.1.1",
     "core-js": "^3.15.1",
     "nuxt": "^2.15.7",
+    "nuxt-fullpage.js": "^0.0.3",
+    "vue-fullpage.js": "^0.1.7",
     "vue-mq": "^1.0.1",
     "vuetify": "^2.5.5"
   },
@@ -26,6 +29,7 @@
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^27.0.5",
     "jest": "^27.0.5",
+    "nuxt-vite": "^0.3.5",
     "pug": "^3.0.2",
     "pug-loader": "^2.4.0",
     "pug-plain-loader": "^1.1.0",

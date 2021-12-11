@@ -2,6 +2,7 @@
 //
 // The variables you want to modify
 // $font-size-root: 20px;
+@charset "UTF-8";
 
 @font-face {
     font-family: "Gunplay";
@@ -22,11 +23,6 @@
     margin-bottom: -5vmin;
 }
 
-.container{
-    min-width: 100vmin;
-    min-height: 100vmin;
-    max-width: 100vmin;
-    max-height: 100vmin;
-    margin: 0;
-    padding: 3vmin;
+.container {
+    margin: auto
 }

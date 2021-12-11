@@ -12,7 +12,7 @@
             v-icon(dark size="40vmin") mdi-account-circle
     v-row(v-if="$mq === 'xs' || $mq === 'sm'" no-gutters class="content_area")
       v-col(class="col-12 warp-text mt-10")
-        v-card#card(light max-height="50vmin" class="card block")
+        v-card#card(light max-height="60vmin" class="card block")
           v-list(dense light class="list_text")
             v-list-item
               v-list-item-icon 氏名
@@ -22,7 +22,7 @@
               v-list-item-content 愛媛県
             v-list-item
               v-list-item-icon 趣味
-              v-list-item-content 英語の勉強がてらNFL観戦
+              v-list-item-content スポーツ観戦
           v-card-text()
             .card_text(v-html="description")
           v-card-actions
@@ -56,7 +56,7 @@
                     v-list-item-content 愛媛県
                   v-list-item
                     v-list-item-icon 趣味
-                    v-list-item-content 英語の勉強がてらNFL観戦
+                    v-list-item-content スポーツ観戦
                 v-card-text(v-html="description")
     v-row(v-if="$mq === 'md' || $mq === 'lg' || $mq === 'xl'" class="content_area")
       v-col(class="col-6 warp-text pa-0")
@@ -69,7 +69,7 @@
             v-list-item-content 愛媛県
           v-list-item
             v-list-item-icon 趣味
-            v-list-item-content 英語の勉強がてらNFL観戦
+            v-list-item-content スポーツ観戦
       v-col(cols="6")
         h2 ひとこと
         p(v-html="description" class="description_text")
@@ -117,6 +117,7 @@ export default {
 
 .list_text {
   font-size: 3vmin;
+  font-weight: 900;
 }
 
 .description_text {

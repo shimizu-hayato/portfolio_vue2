@@ -1,19 +1,20 @@
 <template lang="pug">
 #Skills
   v-container(class="mx-auto fluid")
-    v-row(class="titles" no-gutters dense)
-      v-col(cols="12")
+    //v-row(v-if="$mq === 'lg' || $mq === 'xl'" class="ma-0")
+      v-col(cols="6" class="titles" no-gutters dense)
         .title_text
           h2(class="text-center") Skills
         h3(class="dispaly-3 text-center amber--text") 技術
-    v-row(v-if="$mq === 'lg' || $mq === 'xl'"
-          class="ma-0")
-      v-col(cols="4" 
-            v-for="skill in skills" 
-            :key="skill.title"
-            class="pa-0")
+      v-col(cols="6" v-for="skill in skills" :key="skill.title"
+      class="pa-0")
         SkillCard(:skill="skill")
-    v-row(v-if="$mq === 'md' || $mq === 'xs' || $mq === 'sm'")
+    //v-row(v-if="$mq === 'md' || $mq === 'xs' || $mq === 'sm'")
+    v-row
+      v-col(cols="12" class="titles" no-gutters dense)
+        .title_text
+          h2(class="text-center") Skills
+        h3(class="dispaly-3 text-center amber--text") 技術
       v-col(cols="12")
         TabSkillCards(:skills="skills")
 </template>
