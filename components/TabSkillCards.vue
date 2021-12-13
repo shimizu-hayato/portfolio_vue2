@@ -1,5 +1,5 @@
 <template lang="pug">
-  v-card(class="ma-3" light height="60vmin")
+  v-card(class="ma-0" light height="60vmin")
     v-app-bar(dark :color="bar_color" flat class="ma-0 pa-0")
       template(v-slot:extension)
         v-tabs(
@@ -17,7 +17,7 @@
           ) {{ skill.lang }}
       v-toolbar-title {{title}}
     .content
-      v-tabs-items(v-model="tab" light)
+      v-tabs-items(v-model="tab" light fluid)
         v-tab-item(
             class="tabele_style"
             calculate-widths
@@ -25,14 +25,16 @@
             :key="skill.title"
             light)
           v-data-table(
+            calculate-widths
             light
             :headers="headers"
             :items="skill.tools"
             class=""
             hide-default-footer
             mobile-breakpoint="0")
-          //v-footer(absolute)
-          v-card-text(class="") {{skill.comment}}
+            //v-footer(absolute)
+          v-divider
+          v-card-text(class="card_text") {{skill.comment}}
 </template>
 
 <script>
@@ -46,9 +48,9 @@ export default {
     tab:null,
     bar_color: null,
     title: "",
-    headers: [{text: "技術", align: "end", sortable: false, value: "name"},
-              {text: "経験年数", value: "years", align: "end", sortable: false,},
-              {text: "level", value: "level", align: "end",sortable: false,}],
+    headers: [{text: "技術", align: "end", sortable: false, value: "name", width: "33%"},
+              {text: "経験年数", value: "years", align: "end", sortable: false, width: "33%"},
+              {text: "level", value: "level", align: "end",sortable: false, width: "33%"}],
   }),
   methods:{
     change_bar_color: function(skill){
@@ -68,10 +70,12 @@ export default {
 <style scoped lang="scss">
 .card_text {
     height: 10vmin;
-    font-size: 1.5vmin;
-    padding: 0;
+    font-size: 2vmin;
+    font-weight: 900;
 }
-.tabele_style {
-  max-width: 90vmin;
+
+.content {
+  width: 100%;
 }
+
 </style>

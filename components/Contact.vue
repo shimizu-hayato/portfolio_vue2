@@ -147,6 +147,12 @@ export default {
   margin-bottom: 1vmin;
 }
 
+.title_text {
+    font-family: "Gunplay", sans-serif;
+    font-size: 8vmin;
+    margin-bottom: -1vmin;
+}
+
 .theme--dark.v-application {
     background: white;
     color: #000;
