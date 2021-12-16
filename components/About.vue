@@ -102,11 +102,12 @@ export default {
 </script>
 
 <style scoped lang="scss">
+/*
 #about {
     color: #000;
     background-color: white;
 }
-
+*/
 .title_text {
     font-family: "Gunplay", sans-serif;
     font-size: 10vmin;
@@ -129,5 +130,10 @@ export default {
 
 .description_text {
   font-size: 2vmin;
+}
+
+.theme--dark.v-application {
+    background: white;
+    color: #000;
 }
 </style>
