@@ -1691,9 +1691,9 @@
     picomatch "^2.2.2"
 
 "@sinclair/typebox@^0.24.1":
-  version "0.24.19"
-  resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.24.19.tgz#5297278e0d8a1aea084685a3216074910ac6c113"
-  integrity sha512-gHJu8cdYTD5p4UqmQHrxaWrtb/jkH5imLXzuBypWhKzNkW0qfmgz+w1xaJccWVuJta1YYUdlDiPHXRTR4Ku0MQ==
+  version "0.24.20"
+  resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.24.20.tgz#11a657875de6008622d53f56e063a6347c51a6dd"
+  integrity sha512-kVaO5aEFZb33nPMTZBxiPEkY+slxiPtqC7QX8f9B3eGOMBvEfuMfxp9DSTTCsRJPumPKjrge4yagyssO4q6qzQ==
 
 "@sinonjs/commons@^1.7.0":
   version "1.8.3"
@@ -4945,11 +4945,6 @@ fullpage.js@^3.0.4, fullpage.js@^3.1.0:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/fullpage.js/-/fullpage.js-3.1.2.tgz#ee6289f52edb2a9f9c25d09c4022043b701d3cc0"
   integrity sha512-hv7z6xhbg2StTp1UDq2hi+0oHjhT7cW3zCL3qCIJ3ood5pN0FRBQ2YKIOUobhsp4ATSQlr6sZ2TOcS+Ha+T7Cg==
-
-fullpage.js@^4.0.9:
-  version "4.0.9"
-  resolved "https://registry.yarnpkg.com/fullpage.js/-/fullpage.js-4.0.9.tgz#1ef0418626dc253171aa6b942bf84fc3f6460720"
-  integrity sha512-/P9P8WqK5B1ZKGqT9PQmDdQY2xTg2lt3ersb+/X1kA47NlBakNyS/W4Zw9otW1loG2Or2OAh15VKaJVPsdMNVw==
 
 function-bind@^1.1.1:
   version "1.1.1"
@@ -10173,19 +10168,12 @@ vue-client-only@^2.0.0:
   resolved "https://registry.yarnpkg.com/vue-client-only/-/vue-client-only-2.1.0.tgz#1a67a47b8ecacfa86d75830173fffee3bf8a4ee3"
   integrity sha512-vKl1skEKn8EK9f8P2ZzhRnuaRHLHrlt1sbRmazlvsx6EiC3A8oWF8YCBrMJzoN+W3OnElwIGbVjsx6/xelY1AA==
 
-vue-fullpage.js@^0.1.2:
+vue-fullpage.js@^0.1.2, vue-fullpage.js@^0.1.7:
   version "0.1.7"
   resolved "https://registry.yarnpkg.com/vue-fullpage.js/-/vue-fullpage.js-0.1.7.tgz#62bc53948f2217fb14ea555021b13fb997b4e141"
   integrity sha512-dApXyMrAPhikXbl5ngXALvetsIZCOf+ug9kvcvVSQkOoG9yh9stq5PQYMz/A1yIBVUx1yE9/3cK3VP6rl26V1A==
   dependencies:
     fullpage.js "^3.1.0"
-
-vue-fullpage.js@^0.2.5:
-  version "0.2.5"
-  resolved "https://registry.yarnpkg.com/vue-fullpage.js/-/vue-fullpage.js-0.2.5.tgz#07b8472fe6674eb6ff6e7da83ab1383557063612"
-  integrity sha512-gFZyPQ9L96sv/mrS70Si15+nb6iiqp4xKdv/qiR3UStHaJG4Se+V7L1MKgK95VatOzJUbmKOH6Dp2P5Zqp7s1Q==
-  dependencies:
-    fullpage.js "^4.0.9"
 
 vue-hot-reload-api@^2.3.0:
   version "2.3.4"

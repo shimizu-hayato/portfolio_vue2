@@ -16,7 +16,7 @@
     "core-js": "^3.15.1",
     "nuxt": "^2.15.7",
     "nuxt-fullpage.js": "^0.0.3",
-    "vue-fullpage.js": "^0.2.5",
+    "vue-fullpage.js": "^0.1.7",
     "vue-mq": "^1.0.1",
     "vuetify": "^2.5.5"
   },
