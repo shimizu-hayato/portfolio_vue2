@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-export default {
-  // Disable starting question
-  telemetry: false,
-  
-=======
 const environment = process.env.NODE_ENV || 'local'
 const env = require(`./env/${environment}.ts`)
 
@@ -16,7 +10,6 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: `${env.BASE_URL}favicon.ico` }
     ]
   },
->>>>>>> origin/develop
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
 
