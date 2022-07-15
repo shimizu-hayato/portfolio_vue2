@@ -1,22 +1,61 @@
 <template lang="pug">
-#Home(class='grid grid-rows-4 grid-flow-col gap-0 my-20')
-  div(
-    class='mx-20 row-span-1 text-9xl text-yellow-400 font-steeler'
-  ) Adapt
-  div(
-    class='mx-20 row-span-1 text-9xl text-yellow-400 font-steeler'
-  ) For
-  div(
-    class='mx-20 row-span-1 text-9xl text-yellow-400 font-steeler'
-  ) It
-  div(
-    class='mx-20 grid-cols-12 text-5xl text-yellow-50 text-right font-impact'
-  ) Hayato Shimizu <br> portofolio
+#home
+  v-container
+    v-row(no-gutters)
+      v-col.col-12.amber--text.logo.animate__animated.animate__slideInLeft.animate__fast
+        span Adupt
+      v-col.col-12.author_logo.animate__animated.animate__fadeInUp.animate__delay-4s
+        h1.text-right Portfolio
+      v-col.col-12.amber--text.logo.animate__animated.animate__slideInLeft.animate__delay-1s.animate__fast
+        span For
+      v-col.col-12.author_logo.animate__animated.animate__fadeInUp.animate__delay-5s
+        h1.text-right Hayato Shimizu
+      v-col.col-12.amber--text.logo.animate__animated.animate__slideInLeft.animate__delay-2s.animate__fast
+        span It
 </template>
 
-<style scoped>
-#Home {
-  width: 100%;
-  height: 100%;
+<script>
+export default {
+  data() {
+    return {
+      show: false
+    }
+  },
+  methods: {
+    window: onload = function () {
+      this.show = true;
+    }
+  }
 }
+</script>
+
+<style scoped lang='scss'>
+#home {
+  background-color: black;
+  color: white;
+}
+
+.logo {
+  font-family: 'Gunplay';
+  font-size:25vmin;
+  margin-top: -5%;
+  margin-bottom: -5%;
+  --animate-delay: 0.5s;
+}
+
+.author_logo {
+  font-family: 'Impact';
+  font-size: 6.5vmin;
+  margin-top: -5%;
+  margin-bottom: -5%;
+  --animate-delay: 0.5s;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 1s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+
 </style>

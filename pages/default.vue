@@ -1,13 +1,12 @@
-<template lang="pug">
-<<<<<<< HEAD
-#app
+<template lang='pug'>
+v-app
   section.fullpage.black
     Home
-  section.fullpage.blue
-    About
-  section.fullpage.green
+  section.fullpage.white
+    About(@vcard_hover='onScrollUnit = $event')
+  section.fullpage.black
     Skills
-  section.fullpage.red
+  section.fullpage.white
     Contact
   .sections-menu
     span(
@@ -27,7 +26,8 @@ export default Vue.extend({
       inMove: false as boolean,
       activeSection: 0 as number,
       offsets: [] as Array<number>,
-      touchStartY: 0 as number
+      touchStartY: 0 as number,
+      onScrollUnit: false as boolean,
     }
   },
   methods: {
@@ -38,6 +38,8 @@ export default Vue.extend({
         let sectionOffset: number = sections[i].offsetTop;
         this.offsets.push(sectionOffset);
       }
+      
+      //console.log(this.offsets)
     },
     handleMouseWheel: function(e: any) {
       if (e.wheelDelta < -30 && !this.inMove) {
@@ -48,6 +50,7 @@ export default Vue.extend({
       e.preventDefault();
       return false;
     },
+    /*
     handleKeyUpDown: function(e : any){
       if (e.keyCode == '40' && !this.inMove) {
         this.moveUp();
@@ -57,6 +60,7 @@ export default Vue.extend({
       e.preventDefault();
       return false;
     },
+    */
     handleMouseWheelDOM: function(e : any) {
       if (e.detail > 0 && !this.inMove) {
         this.moveUp();
@@ -76,7 +80,7 @@ export default Vue.extend({
       }
         
       this.scrollToSection(this.activeSection, true);
-      console.log('move down ' + this.activeSection);
+      //console.log('move down ' + this.activeSection);
     },
     moveUp() {
       this.inMove = true;
@@ -88,7 +92,7 @@ export default Vue.extend({
       }
         
       this.scrollToSection(this.activeSection, true);
-      console.log('move up ' + this.activeSection);
+      //console.log('move up ' + this.activeSection);
     },
     scrollToSection(id: number, force = false) {
       if(this.inMove && !force) return false;
@@ -121,9 +125,13 @@ export default Vue.extend({
       console.log('Touch')
       this.touchStartY = 0;
       return false;
+    },
+    notScroll() {
+      this.inMove = true;
     }
   },
   mounted() {
+    
     this.calculateSectionOffsets();
     
     window.addEventListener('DOMMouseScroll', this.handleMouseWheelDOM, { passive: false });  // Mozilla Firefox
@@ -131,7 +139,7 @@ export default Vue.extend({
     
     window.addEventListener('touchstart', this.touchStart, { passive: false }); // mobile devices
     window.addEventListener('touchmove', this.touchMove, { passive: false }); // mobile devices
-    window.addEventListener('keydown', this.handleKeyUpDown, { passive: false }); // mobile devices
+    //window.addEventListener('keydown', this.handleKeyUpDown, { passive: false }); // mobile devices
   },
   destroyed() {
     window.removeEventListener('mousewheel', this.handleMouseWheel);  // Other browsers
@@ -139,57 +147,9 @@ export default Vue.extend({
     
     window.removeEventListener('touchstart', this.touchStart); // mobile devices
     window.removeEventListener('touchmove', this.touchMove); // mobile devices
-    window.removeEventListener('keydown', this.handleKeyUpDown);
+    //window.removeEventListener('keydown', this.handleKeyUpDown);
   }
 })
-=======
-v-app
-  full-page(ref="fullpage" :options="options" id="fullpage")
-    .section.black
-      Home(v-show="home_page")
-    .section
-      About(v-show="about_page")
-    .section.black
-      Skills(v-show="skills_page")
-    .section
-      Contact(v-show="contact_page")
-</template>
-
-<script>
-export default {
-  data() {
-    return {
-      options: {
-        //licenseKey: 'YOUR_KEY_HEERE',
-        //menu: '#menu',
-        anchors: ['page1', 'page2', 'page3', 'page4'],
-        afterLoad: this.afterLoad,
-        sectionsColor: ['#000', '#fff', '#000', '#fff']
-      },
-      active_page: null,
-      home_page: false,
-      about_page: false,
-      skills_page: false,
-      contact_page: false
-    }
-  },
-  methods: {
-    afterLoad() {
-      console.log(fullpage_api.getActiveSection())
-      var page_num = fullpage_api.getActiveSection().index
-      if (page_num == 0) {
-        this.home_page = true;
-      } else if (page_num == 1) {
-        this.about_page = true;
-      } else if (page_num == 2) {
-        this.skills_page = true;
-      } else if (page_num == 3) {
-        this.contact_page = true;
-      }
-    }
-  }
-}
->>>>>>> origin/develop
 </script>
 
 <style scoped lang='scss'>
@@ -197,7 +157,6 @@ h2 {
   position: fixed;
 }
 
-<<<<<<< HEAD
 .fullpage {
   height: 100vh;
   width: 100%;
@@ -205,24 +164,14 @@ h2 {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  overflow: hidden;
+  background-color: red;
 }
 
-/*
-h1 {
-  font-size: 6em;
-  margin: 0;
-  text-align: center;
-  padding: 0 1rem;
-}
-*/
-
-=======
->>>>>>> origin/develop
 p {
   font-size: 1em;
 }
 
-<<<<<<< HEAD
 .fullpage a {
   text-decoration: none;
   font-weight: 600;
@@ -232,17 +181,11 @@ p {
   margin-left: 5px;
 }
 
-=======
->>>>>>> origin/develop
 .red {
   background-color: #ab4545;
 }
 
-<<<<<<< HEAD
 section.black {
-=======
-.black {
->>>>>>> origin/develop
   background-color: #000;
 }
 .blue {
@@ -253,12 +196,9 @@ section.black {
   background-color: #68c368;
 }
 
-<<<<<<< HEAD
-/*
-h1.black {
-  color: #fff;
+.white {
+  background-color: #fff
 }
-*/
 
 .sections-menu {
   position: fixed;
@@ -282,17 +222,4 @@ h1.black {
   opacity: 1;
   transform: scale(1.5);
 }
-
-/*
-@media screen and (max-width: 1200px) {
-  h1 {
-    font-size: 2.5em;
-  }
-}
-*/
-=======
-.white {
-  background-color: #fff
-}
->>>>>>> origin/develop
 </style>

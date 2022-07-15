@@ -1,16 +1,16 @@
-<template lang="pug">
-<<<<<<< HEAD
-#app
-  section.fullpage.black
-    Home
-  section.fullpage.blue
-    About
-  section.fullpage.green
-    Skills
-  section.fullpage.red
-    Contact
-  .sections-menu
-    span(
+<template lang='pug'>
+v-app
+  #horizontal
+    section.fullpage
+      Home
+    section.fullpage.white
+      Abouth(@vcard_hover='onScrollUnit = $event')
+    section.fullpage.black
+      Skills
+    section.fullpage.white
+      Contact
+    .sections-menu
+      span(
       class="menu-point"
       v-bind:class="{active: activeSection == index}"
       v-on:click="scrollToSection(index)"
@@ -27,17 +27,21 @@ export default Vue.extend({
       inMove: false as boolean,
       activeSection: 0 as number,
       offsets: [] as Array<number>,
-      touchStartY: 0 as number
+      touchStartY: 0 as number,
+      onScrollUnit: false as boolean,
     }
   },
   methods: {
+    
     calculateSectionOffsets() {
       let sections = document.getElementsByTagName('section');
       let length = sections.length;
       for(let i = 0; i < length; i++) {
-        let sectionOffset: number = sections[i].offsetTop;
+        let sectionOffset: number = sections[i].offsetLeft;
         this.offsets.push(sectionOffset);
       }
+      
+      console.log(this.offsets)
     },
     handleMouseWheel: function(e: any) {
       if (e.wheelDelta < -30 && !this.inMove) {
@@ -76,7 +80,7 @@ export default Vue.extend({
       }
         
       this.scrollToSection(this.activeSection, true);
-      console.log('move down ' + this.activeSection);
+      //console.log('move down ' + this.activeSection);
     },
     moveUp() {
       this.inMove = true;
@@ -88,15 +92,13 @@ export default Vue.extend({
       }
         
       this.scrollToSection(this.activeSection, true);
-      console.log('move up ' + this.activeSection);
+      //console.log('move up ' + this.activeSection);
     },
     scrollToSection(id: number, force = false) {
       if(this.inMove && !force) return false;
       this.activeSection = id;
       this.inMove = true;
-      //console.log(id);
-      document.getElementsByTagName('section')[id].scrollIntoView({behavior: 'smooth'});
-      
+      document.getElementsByTagName('section')[id].scrollIntoView({behavior: 'smooth', inline: "end"});
       setTimeout(() => {
         this.inMove = false;
       }, 600);
@@ -121,9 +123,14 @@ export default Vue.extend({
       console.log('Touch')
       this.touchStartY = 0;
       return false;
+    },
+    notScroll() {
+      this.inMove = true;
     }
+    
   },
   mounted() {
+    
     this.calculateSectionOffsets();
     
     window.addEventListener('DOMMouseScroll', this.handleMouseWheelDOM, { passive: false });  // Mozilla Firefox
@@ -131,7 +138,7 @@ export default Vue.extend({
     
     window.addEventListener('touchstart', this.touchStart, { passive: false }); // mobile devices
     window.addEventListener('touchmove', this.touchMove, { passive: false }); // mobile devices
-    window.addEventListener('keydown', this.handleKeyUpDown, { passive: false }); // mobile devices
+    //window.addEventListener('keydown', this.handleKeyUpDown, { passive: false }); // mobile devices
   },
   destroyed() {
     window.removeEventListener('mousewheel', this.handleMouseWheel);  // Other browsers
@@ -139,57 +146,9 @@ export default Vue.extend({
     
     window.removeEventListener('touchstart', this.touchStart); // mobile devices
     window.removeEventListener('touchmove', this.touchMove); // mobile devices
-    window.removeEventListener('keydown', this.handleKeyUpDown);
+    //window.removeEventListener('keydown', this.handleKeyUpDown);
   }
 })
-=======
-v-app
-  full-page(ref="fullpage" :options="options" id="fullpage")
-    .section.black
-      Home(v-show="home_page")
-    .section
-      About(v-show="about_page")
-    .section.black
-      Skills(v-show="skills_page")
-    .section
-      Contact(v-show="contact_page")
-</template>
-
-<script>
-export default {
-  data() {
-    return {
-      options: {
-        //licenseKey: 'YOUR_KEY_HEERE',
-        //menu: '#menu',
-        anchors: ['page1', 'page2', 'page3', 'page4'],
-        afterLoad: this.afterLoad,
-        sectionsColor: ['#000', '#fff', '#000', '#fff']
-      },
-      active_page: null,
-      home_page: false,
-      about_page: false,
-      skills_page: false,
-      contact_page: false
-    }
-  },
-  methods: {
-    afterLoad() {
-      console.log(fullpage_api.getActiveSection())
-      var page_num = fullpage_api.getActiveSection().index
-      if (page_num == 0) {
-        this.home_page = true;
-      } else if (page_num == 1) {
-        this.about_page = true;
-      } else if (page_num == 2) {
-        this.skills_page = true;
-      } else if (page_num == 3) {
-        this.contact_page = true;
-      }
-    }
-  }
-}
->>>>>>> origin/develop
 </script>
 
 <style scoped lang='scss'>
@@ -197,32 +156,41 @@ h2 {
   position: fixed;
 }
 
-<<<<<<< HEAD
-.fullpage {
-  height: 100vh;
-  width: 100%;
+#horizontal {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  overflow-x: scroll;
+  overflow-y: auto;
+	//white-space: nowrap;
+  min-width: 200vmin;
+}
+
+.fullpage {
+  height: 100%;
+  width: 100vmin;
+  min-width: 100vmin;
+  display: flex;
+  flex-wrap: nowrap;
+  //justify-content: center;
+  //align-items: center;
+  //flex-direction: column;
+  flex-direction: row;
+  overflow: hidden;
+  //background-color: red;
 }
 
 /*
 h1 {
   font-size: 6em;
   margin: 0;
-  text-align: center;
+  text-align:vertical-delimiters center;
   padding: 0 1rem;
 }
 */
 
-=======
->>>>>>> origin/develop
 p {
   font-size: 1em;
 }
 
-<<<<<<< HEAD
 .fullpage a {
   text-decoration: none;
   font-weight: 600;
@@ -232,17 +200,11 @@ p {
   margin-left: 5px;
 }
 
-=======
->>>>>>> origin/develop
 .red {
   background-color: #ab4545;
 }
 
-<<<<<<< HEAD
 section.black {
-=======
-.black {
->>>>>>> origin/develop
   background-color: #000;
 }
 .blue {
@@ -253,7 +215,10 @@ section.black {
   background-color: #68c368;
 }
 
-<<<<<<< HEAD
+.white {
+  background-color: #fff
+}
+
 /*
 h1.black {
   color: #fff;
@@ -290,9 +255,4 @@ h1.black {
   }
 }
 */
-=======
-.white {
-  background-color: #fff
-}
->>>>>>> origin/develop
 </style>
